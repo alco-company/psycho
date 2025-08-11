@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
-  # Tenant subdomain root
-  constraints(lambda { |req| req.subdomains.present? && req.subdomains.first != "www" }) do
+  # Tenant subdomain root (only when subdomain slug matches an existing tenant)
+  constraints(lambda { |req|
+    req.subdomains.present? && req.subdomains.first != "www" && defined?(Tenant) && Tenant.where(slug: req.subdomains.first).exists?
+  }) do
     root to: "tenants/home#show", as: :tenant_root
   end
 
