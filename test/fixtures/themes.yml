@@ -1,0 +1,15 @@
+# Fixtures for themes
+
+default_one:
+  name: One Default
+  html_layout: "THEME-ONE {{yield}} END"
+  css: ""
+  js: ""
+  tenant: one
+
+two_theme:
+  name: Two Domain Theme
+  html_layout: "THEME-TWO {{yield}} END"
+  css: ""
+  js: ""
+  tenant: two

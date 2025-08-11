@@ -1,0 +1,36 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Themes</h1>
+
+<div id="themes">
+  <table class="min-w-full">
+    <thead>
+      <tr>
+        <th class="text-left p-2">Name</th>
+        <th class="text-left p-2">Tenant</th>
+        <th class="text-left p-2">Linked domains</th>
+        <th class="text-left p-2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @themes.each do |theme| %>
+        <tr>
+          <td class="p-2"><%= link_to theme.name, theme %></td>
+          <td class="p-2"><%= theme.tenant&.name %></td>
+          <td class="p-2">
+            <% if theme.domains.any? %>
+              <%= theme.domains.map(&:host).join(", ") %>
+            <% else %>
+              —
+            <% end %>
+          </td>
+          <td class="p-2"><%= link_to "Edit", edit_theme_path(theme) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<p>
+  <%= link_to "New theme", new_theme_path %>
+</p>

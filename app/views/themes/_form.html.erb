@@ -1,0 +1,54 @@
+<%= form_with(model: theme, class: "contents", data: { controller: "theme-preview", "theme-preview-sample-value": "<h1>Sample page</h1><p>This is example content rendered at {{yield}}.</p>" }) do |form| %>
+  <% if theme.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(theme.errors.count, "error") %> prohibited this theme from being saved:</h2>
+
+      <ul class="list-disc ml-6">
+        <% theme.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": theme.errors[:name].none?, "border-red-400 focus:outline-red-600": theme.errors[:name].any?}] %>
+  </div>
+
+  <div class="my-5 grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <%= form.label :tenant_id, "Tenant" %>
+      <%= form.collection_select :tenant_id, Tenant.all, :id, :name, { include_blank: "-- none --" }, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": theme.errors[:tenant_id].none?, "border-red-400 focus:outline-red-600": theme.errors[:tenant_id].any?}] %>
+    </div>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :html_layout, "HTML Layout (use {{yield}} where page content should render)" %>
+    <%= form.text_area :html_layout, rows: 12, data: { "theme-preview-target": "html", action: "input->theme-preview#changed" }, class: ["font-mono block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": theme.errors[:html_layout].none?, "border-red-400 focus:outline-red-600": theme.errors[:html_layout].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :css %>
+    <%= form.text_area :css, rows: 8, data: { "theme-preview-target": "css", action: "input->theme-preview#changed" }, class: ["font-mono block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": theme.errors[:css].none?, "border-red-400 focus:outline-red-600": theme.errors[:css].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :js %>
+    <%= form.text_area :js, rows: 8, data: { "theme-preview-target": "js", action: "input->theme-preview#changed" }, class: ["font-mono block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": theme.errors[:js].none?, "border-red-400 focus:outline-red-600": theme.errors[:js].any?}] %>
+  </div>
+
+  <div class="my-10">
+    <div class="flex items-center justify-between">
+      <h3 class="text-lg font-semibold">Live preview</h3>
+      <span data-theme-preview-target="warning" class="text-xs text-red-600 hidden">Missing {{yield}} placeholder in HTML layout</span>
+    </div>
+    <div class="border rounded overflow-hidden h-96 mt-2">
+      <iframe data-theme-preview-target="frame" class="w-full h-full bg-white"></iframe>
+    </div>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer", data: { "theme-preview-target": "submit" } %>
+  </div>
+<% end %>

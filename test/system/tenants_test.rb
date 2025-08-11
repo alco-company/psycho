@@ -22,6 +22,7 @@ class TenantsTest < ApplicationSystemTestCase
     fill_in "Plan expires at", with: @tenant.plan_expires_at
     fill_in "Tax number", with: @tenant.tax_number
     fill_in "Time zone", with: @tenant.time_zone
+    fill_in "Subdomain", with: "newco"
     click_on "Create Tenant"
 
     assert_text "Tenant was successfully created"

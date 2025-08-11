@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_11_100000) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_11_120000) do
   create_table "domains", force: :cascade do |t|
     t.string "host", null: false
     t.integer "tenant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "theme_id"
     t.index ["host"], name: "index_domains_on_host", unique: true
     t.index ["tenant_id"], name: "index_domains_on_tenant_id"
+    t.index ["theme_id"], name: "index_domains_on_theme_id"
   end
 
   create_table "tenants", force: :cascade do |t|
@@ -34,8 +36,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_11_100000) do
     t.string "slug", null: false
     t.string "homepage_title"
     t.text "homepage_body"
+    t.integer "default_theme_id"
+    t.index ["default_theme_id"], name: "index_tenants_on_default_theme_id"
     t.index ["slug"], name: "index_tenants_on_slug", unique: true
   end
 
+  create_table "themes", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "html_layout", default: "", null: false
+    t.text "css"
+    t.text "js"
+    t.integer "tenant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tenant_id"], name: "index_themes_on_tenant_id"
+  end
+
   add_foreign_key "domains", "tenants"
+  add_foreign_key "domains", "themes"
+  add_foreign_key "tenants", "themes", column: "default_theme_id"
+  add_foreign_key "themes", "tenants"
 end

@@ -1,0 +1,30 @@
+<div id="theme_<%= theme.id %>">
+  <p>
+    <strong>Name:</strong>
+    <%= theme.name %>
+  </p>
+  <p>
+    <strong>Tenant:</strong>
+    <%= theme.tenant&.name || "—" %>
+  </p>
+  <p>
+    <strong>Linked domains:</strong>
+    <% if theme.domains.any? %>
+      <%= theme.domains.map(&:host).join(", ") %>
+    <% else %>
+      —
+    <% end %>
+  </p>
+  <p>
+    <strong>HTML layout:</strong>
+    <pre class="whitespace-pre-wrap"><%= h(theme.html_layout) %></pre>
+  </p>
+  <p>
+    <strong>CSS:</strong>
+    <pre class="whitespace-pre-wrap"><%= h(theme.css) %></pre>
+  </p>
+  <p>
+    <strong>JS:</strong>
+    <pre class="whitespace-pre-wrap"><%= h(theme.js) %></pre>
+  </p>
+</div>

@@ -1,4 +1,4 @@
-<%= form_with(model: domain, class: "contents") do |form| %>
+<%= form_with(model: domain, class: "contents", data: { controller: "themes-filter" , "themes-filter-themes-value": j(Tenant.includes(:themes).map { |t| [t.id, t.themes.map { |th| { id: th.id, name: th.name } }] }.to_h.to_json) }) do |form| %>
   <% if domain.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
       <h2><%= pluralize(domain.errors.count, "error") %> prohibited this domain from being saved:</h2>
@@ -18,7 +18,13 @@
 
   <div class="my-5">
     <%= form.label :tenant_id, "Tenant" %>
-    <%= form.collection_select :tenant_id, Tenant.all, :id, :name, {}, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": domain.errors[:tenant_id].none?, "border-red-400 focus:outline-red-600": domain.errors[:tenant_id].any?}] %>
+    <%= form.collection_select :tenant_id, Tenant.all, :id, :name, {}, data: { "themes-filter-target": "tenantSelect", action: "change->themes-filter#tenantChanged" }, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": domain.errors[:tenant_id].none?, "border-red-400 focus:outline-red-600": domain.errors[:tenant_id].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :theme_id, "Theme" %>
+    <%= form.collection_select :theme_id, (domain.tenant ? domain.tenant.themes : Theme.none), :id, :name, { include_blank: "-- default (tenant/app) --" }, data: { "themes-filter-target": "themeSelect" }, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": domain.errors[:theme_id].none?, "border-red-400 focus:outline-red-600": domain.errors[:theme_id].any?}] %>
+    <p class="text-xs text-gray-500 mt-1">Only themes from the selected tenant are shown. Leave blank to use the tenant/app default theme.</p>
   </div>
 
   <div class="inline">

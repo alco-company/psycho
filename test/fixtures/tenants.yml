@@ -12,6 +12,7 @@ one:
   time_zone: MyString
   homepage_title: One Home
   homepage_body: Welcome to tenant one.
+  default_theme: 
 
 two:
   name: MyString
@@ -25,3 +26,4 @@ two:
   time_zone: MyString
   homepage_title: Two Home
   homepage_body: Welcome to tenant two.
+  default_theme:
