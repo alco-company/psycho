@@ -22,3 +22,6 @@
 - add Tailwind classes build separate to each tenant
 - Dockerfile: install Node.js + npm and pin Tailwind CLI globally (npm i -g @tailwindcss/cli@4) in the base image; final image is FROM base so Node/CLI are available at runtime for TailwindBuildJob in web/worker
 - Image verification: docker run --rm psycho node -v; docker run --rm psycho npm -v; docker run --rm psycho tailwindcss --help; docker run --rm psycho npx -y @tailwindcss/cli@4 --help
+- prepare domains staging-pry.ztin.gs and psy.ztin.gs for deployment of staging and production
+- prepare new repo on GitHub
+- 
