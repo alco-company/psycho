@@ -12,7 +12,6 @@ one:
   time_zone: MyString
   homepage_title: One Home
   homepage_body: Welcome to tenant one.
-  default_theme: 
 
 two:
   name: MyString
@@ -26,4 +25,19 @@ two:
   time_zone: MyString
   homepage_title: Two Home
   homepage_body: Welcome to tenant two.
-  default_theme:
+
+acme:
+  slug: acme
+  name: Acme Corp
+  tailwind_digest:
+  tailwind_built_at:
+  tailwind_input_digest:
+  plan: MyString
+  plan_changed_at: MyString
+  plan_expires_at: MyString
+  tax_number: MyString
+  email: MyString
+  locale: MyString
+  time_zone: MyString
+  homepage_title: Two Home
+  homepage_body: Welcome to tenant two.

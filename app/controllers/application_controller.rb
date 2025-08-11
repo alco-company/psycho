@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :set_current_tenant
   before_action :enforce_known_host!
 
-  helper_method :current_theme
+  helper_method :current_theme, :current_tenant, :current_domain
 
   private
   def set_current_tenant
@@ -28,6 +28,14 @@ class ApplicationController < ActionController::Base
     Rails.logger.warn("set_current_tenant failed: #{e.class}: #{e.message}")
     Current.tenant = nil
     Current.domain = nil
+  end
+
+  def current_tenant
+    Current.tenant
+  end
+
+  def current_domain
+    Current.domain
   end
 
   def current_theme

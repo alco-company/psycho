@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_11_143003) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_11_143004) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -94,6 +94,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_11_143003) do
     t.string "slug", null: false
     t.string "homepage_title"
     t.text "homepage_body"
+    t.string "tailwind_digest"
+    t.string "tailwind_input_digest"
+    t.datetime "tailwind_built_at"
     t.integer "default_theme_id"
     t.index ["default_theme_id"], name: "index_tenants_on_default_theme_id"
     t.index ["slug"], name: "index_tenants_on_slug", unique: true
@@ -114,8 +117,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_11_143003) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "blogs", "tenants"
   add_foreign_key "domains", "tenants"
-  add_foreign_key "domains", "themes"
+  add_foreign_key "domains", "themes", on_delete: :nullify
   add_foreign_key "posts", "blogs"
-  add_foreign_key "tenants", "themes", column: "default_theme_id"
+  add_foreign_key "tenants", "themes", column: "default_theme_id", on_delete: :nullify
   add_foreign_key "themes", "tenants"
 end

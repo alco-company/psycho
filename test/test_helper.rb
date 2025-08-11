@@ -1,6 +1,7 @@
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
+Dir[File.join(__dir__, "support/**/*.rb")].sort.each { |f| require f }
 
 module ActiveSupport
   class TestCase
@@ -11,5 +12,15 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    include DefaultThemeLinker
+    include ActiveJob::TestHelper
+    setup do
+      link_default_themes
+      clear_enqueued_jobs
+    end
   end
+end
+
+class ActiveJob::TestCase
+  include ActiveJob::TestHelper
 end

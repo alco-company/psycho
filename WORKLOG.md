@@ -19,3 +19,6 @@
 - Tenant blog landing: tenant-aware /blog and /blog/:id routes; Tenants::BlogsController (default/show); views; link from tenant homepage; integration tests; global fallbacks for non-tenant hosts
 - Posts: scaffolded Post (belongs_to Blog) with title, ActionText rich content, published_at; installed ActionText/ActiveStorage tables; controller/views updated; fixtures; controller + system tests passing
 - Tenant blog list: render latest 5 posts under each blog description on /blog, ordered by published_at desc (fallback created_at); integration tests for 0, 4, and 6 posts; controller adjusted to always render index
+- add Tailwind classes build separate to each tenant
+- Dockerfile: install Node.js + npm and pin Tailwind CLI globally (npm i -g @tailwindcss/cli@4) in the base image; final image is FROM base so Node/CLI are available at runtime for TailwindBuildJob in web/worker
+- Image verification: docker run --rm psycho node -v; docker run --rm psycho npm -v; docker run --rm psycho tailwindcss --help; docker run --rm psycho npx -y @tailwindcss/cli@4 --help

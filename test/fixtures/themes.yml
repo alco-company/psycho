@@ -13,3 +13,12 @@ two_theme:
   css: ""
   js: ""
   tenant: two
+
+acme_theme:
+  name: Acme Theme
+  tenant: acme
+  css: ".brand { @apply text-blue-600; }"
+  js: "const BTN = 'px-4 py-2 rounded bg-blue-600 text-white';"
+  html_layout: |
+    <header class="bg-blue-600 text-white"></header>
+    {{yield}}

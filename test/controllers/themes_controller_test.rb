@@ -1,6 +1,8 @@
 require "test_helper"
 
 class ThemesControllerTest < ActionDispatch::IntegrationTest
+  fixtures :tenants, :themes
+
   setup do
     @theme = themes(:default_one)
   end

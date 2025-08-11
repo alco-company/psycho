@@ -3,7 +3,6 @@ require "test_helper"
 class DynamicThemeRenderingTest < ActionDispatch::IntegrationTest
   setup do
     @tenant = tenants(:one)
-    @tenant.update!(default_theme: themes(:default_one))
   end
 
   test "tenant default theme renders when no domain theme" do

@@ -16,6 +16,9 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <% if current_tenant&.respond_to?(:tailwind_asset_url) && current_tenant.tailwind_asset_url.present? %>
+      <%= stylesheet_link_tag current_tenant.tailwind_asset_url, "data-turbo-track": "reload" %>
+    <% end %>
     <%= stylesheet_link_tag "actiontext", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
