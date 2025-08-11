@@ -1,6 +1,7 @@
 class Tenant < ApplicationRecord
   has_many :domains, dependent: :destroy
   has_many :themes, dependent: :destroy
+  has_many :blogs, dependent: :destroy
   belongs_to :default_theme, class_name: "Theme", optional: true
 
   validates :name, presence: true

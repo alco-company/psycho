@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="flex items-center justify-between pb-5 sm:pb-0">
+  <h1 class="text-3xl font-bold">Blogs</h1>
+  <%= link_to "New blog", new_blog_path, class: "px-3 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-md" %>
+</div>
+
+<div id="blogs" class="min-w-full divide-y divide-gray-200">
+  <% @blogs.each do |blog| %>
+    <div class="py-2 flex items-center justify-between">
+      <div class="space-y-2">
+        <div class="text-lg font-medium"><%= link_to blog.title, blog %></div>
+        <div class="text-gray-600">Tenant: <%= blog.tenant.name %></div>
+        <div class="text-gray-600">Comments: <code><%= blog.comments_setting %></code></div>
+      </div>
+      <div>
+        <%= link_to "Show", blog, class: "px-3 py-2 bg-gray-100 hover:bg-gray-50 rounded-md" %>
+      </div>
+    </div>
+  <% end %>
+</div>

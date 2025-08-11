@@ -1,0 +1,11 @@
+<div class="space-y-2">
+  <h1 class="text-3xl font-bold"><%= @blog.title %></h1>
+  <div class="text-gray-600">Tenant: <%= @blog.tenant.name %></div>
+  <div class="text-gray-600">Comments: <code><%= @blog.comments_setting %></code></div>
+
+  <p class="mt-4"><%= simple_format(@blog.description) %></p>
+</div>
+
+<div class="mt-5">
+  <%= link_to "Back to blogs", tenant_blog_path, class: "px-3 py-2 bg-gray-100 hover:bg-gray-50 rounded-md" %>
+</div>

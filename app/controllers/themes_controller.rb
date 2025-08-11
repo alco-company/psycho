@@ -41,6 +41,6 @@ class ThemesController < ApplicationController
     end
 
     def theme_params
-      params.expect(theme: [:name, :html_layout, :css, :js, :tenant_id])
+      params.expect(theme: [ :name, :html_layout, :css, :js, :tenant_id ])
     end
 end

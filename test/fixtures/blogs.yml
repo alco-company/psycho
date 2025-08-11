@@ -1,0 +1,11 @@
+one:
+  tenant: one
+  title: One Blog
+  description: First blog
+  comments_setting: none
+
+two:
+  tenant: two
+  title: Two Blog
+  description: Second blog
+  comments_setting: users

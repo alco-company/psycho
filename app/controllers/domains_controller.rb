@@ -41,6 +41,6 @@ class DomainsController < ApplicationController
     end
 
     def domain_params
-      params.expect(domain: [:host, :tenant_id, :theme_id])
+      params.expect(domain: [ :host, :tenant_id, :theme_id ])
     end
 end

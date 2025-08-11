@@ -13,3 +13,9 @@
 - Theme form: live preview + basic validation for {{yield}} (Stimulus controller: theme-preview)
 - Tailwind fix: include tailwind.css in dynamic layout so utilities load on all hosts
 - Fallback for unknown hosts: route constraints + landing page; added integration tests to prevent redirect loops
+- Blog: model with comments_setting enum, migration, association on Tenant
+- Seeds: psychOS default blog
+- Blogs: CRUD UI (controller, views) and tests (controller, system)
+- Tenant blog landing: tenant-aware /blog and /blog/:id routes; Tenants::BlogsController (default/show); views; link from tenant homepage; integration tests; global fallbacks for non-tenant hosts
+- Posts: scaffolded Post (belongs_to Blog) with title, ActionText rich content, published_at; installed ActionText/ActiveStorage tables; controller/views updated; fixtures; controller + system tests passing
+- Tenant blog list: render latest 5 posts under each blog description on /blog, ordered by published_at desc (fallback created_at); integration tests for 0, 4, and 6 posts; controller adjusted to always render index

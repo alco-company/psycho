@@ -22,7 +22,7 @@ class TenantTest < ActiveSupport::TestCase
       assert_empty tenant.errors[:slug], "expected '#{s}' to be valid"
     end
 
-    bad = ["-acme", "acme-", "Acme", "acme_", "", "a--b"]
+    bad = [ "-acme", "acme-", "Acme", "acme_", "", "a--b" ]
     bad.each do |s|
       tenant = Tenant.new(name: "X", slug: s)
       assert_not tenant.valid?, "expected '#{s}' to be invalid"

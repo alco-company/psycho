@@ -1,0 +1,10 @@
+<div id="post_<%= post.id %>">
+  <h2 class="text-xl font-semibold"><%= post.title %></h2>
+  <div class="text-sm text-gray-500">Blog: <%= post.blog.title %> — Tenant: <%= post.blog.tenant.name %></div>
+  <% if post.published_at.present? %>
+    <div class="text-sm text-gray-500">Published: <%= l(post.published_at, format: :long) %></div>
+  <% end %>
+  <div class="prose mt-3">
+    <%= post.content&.body&.to_s&.html_safe %>
+  </div>
+</div>
