@@ -1,0 +1,10 @@
+<div id="domain_<%= domain.id %>">
+  <p>
+    <strong>Host:</strong>
+    <%= domain.host %>
+  </p>
+  <p>
+    <strong>Tenant:</strong>
+    <%= link_to domain.tenant.name, domain.tenant %>
+  </p>
+</div>

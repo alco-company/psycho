@@ -17,6 +17,12 @@
   </div>
 
   <div class="my-5">
+    <%= form.label :slug, "Subdomain" %>
+    <%= form.text_field :slug, placeholder: "acme", class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": tenant.errors[:slug].none?, "border-red-400 focus:outline-red-600": tenant.errors[:slug].any?}] %>
+    <p class="text-xs text-gray-500 mt-1">Lowercase letters, numbers and dashes. Will be used as subdomain (e.g., acme.lvh.me)</p>
+  </div>
+
+  <div class="my-5">
     <%= form.label :plan %>
     <%= form.text_field :plan, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": tenant.errors[:plan].none?, "border-red-400 focus:outline-red-600": tenant.errors[:plan].any?}] %>
   </div>
@@ -49,6 +55,16 @@
   <div class="my-5">
     <%= form.label :time_zone %>
     <%= form.text_field :time_zone, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": tenant.errors[:time_zone].none?, "border-red-400 focus:outline-red-600": tenant.errors[:time_zone].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :homepage_title %>
+    <%= form.text_field :homepage_title, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": tenant.errors[:homepage_title].none?, "border-red-400 focus:outline-red-600": tenant.errors[:homepage_title].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :homepage_body %>
+    <%= form.text_area :homepage_body, rows: 6, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": tenant.errors[:homepage_body].none?, "border-red-400 focus:outline-red-600": tenant.errors[:homepage_body].any?}] %>
   </div>
 
   <div class="inline">

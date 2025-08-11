@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :tenants
+  resources :domains
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -10,6 +11,16 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  # Tenant subdomain root
+  constraints(lambda { |req| req.subdomains.present? && req.subdomains.first != "www" }) do
+    root to: "tenants/home#show", as: :tenant_root
+  end
+
+  # Custom domain root mapped via Domain model
+  constraints(lambda { |req| defined?(Domain) && Domain.where(host: req.host).exists? }) do
+    root to: "tenants/home#show", as: :custom_domain_root
+  end
+
+  # Global landing page root (no tenant)
+  root to: "public#landing"
 end

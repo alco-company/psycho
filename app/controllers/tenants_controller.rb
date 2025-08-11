@@ -25,7 +25,7 @@ class TenantsController < ApplicationController
 
     respond_to do |format|
       if @tenant.save
-        format.html { redirect_to @tenant, notice: "Tenant was successfully created." }
+        format.html { redirect_to @tenant, notice: "Tenant was successfully created. Visit http://#{@tenant.slug}.lvh.me:3000/ in development." }
         format.json { render :show, status: :created, location: @tenant }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -65,6 +65,6 @@ class TenantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tenant_params
-      params.expect(tenant: [ :name, :plan, :plan_changed_at, :plan_expires_at, :tax_number, :email, :locale, :time_zone ])
+      params.expect(tenant: [ :name, :plan, :plan_changed_at, :plan_expires_at, :tax_number, :email, :locale, :time_zone, :slug, :homepage_title, :homepage_body ])
     end
 end

@@ -17,7 +17,7 @@ class TenantsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create tenant" do
     assert_difference("Tenant.count") do
-      post tenants_url, params: { tenant: { email: @tenant.email, locale: @tenant.locale, name: @tenant.name, plan: @tenant.plan, plan_changed_at: @tenant.plan_changed_at, plan_expires_at: @tenant.plan_expires_at, tax_number: @tenant.tax_number, time_zone: @tenant.time_zone } }
+      post tenants_url, params: { tenant: { email: "new@example.com", locale: "en", name: "New", plan: "free", plan_changed_at: "", plan_expires_at: "", tax_number: "", time_zone: "UTC", slug: "new", homepage_title: "Home", homepage_body: "Welcome" } }
     end
 
     assert_redirected_to tenant_url(Tenant.last)
@@ -34,7 +34,7 @@ class TenantsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update tenant" do
-    patch tenant_url(@tenant), params: { tenant: { email: @tenant.email, locale: @tenant.locale, name: @tenant.name, plan: @tenant.plan, plan_changed_at: @tenant.plan_changed_at, plan_expires_at: @tenant.plan_expires_at, tax_number: @tenant.tax_number, time_zone: @tenant.time_zone } }
+    patch tenant_url(@tenant), params: { tenant: { email: @tenant.email, locale: @tenant.locale, name: @tenant.name, plan: @tenant.plan, plan_changed_at: @tenant.plan_changed_at, plan_expires_at: @tenant.plan_expires_at, tax_number: @tenant.tax_number, time_zone: @tenant.time_zone, slug: @tenant.slug, homepage_title: "Updated", homepage_body: "Updated body" } }
     assert_redirected_to tenant_url(@tenant)
   end
 

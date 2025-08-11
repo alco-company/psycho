@@ -1,0 +1,7 @@
+one:
+  host: example.test
+  tenant: one
+
+two:
+  host: custom-two.test
+  tenant: two

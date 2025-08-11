@@ -1,0 +1,6 @@
+<div class="mx-auto max-w-2xl py-16">
+  <h1 class="text-3xl font-bold"><%= @tenant.homepage_title.presence || @tenant.name %></h1>
+  <div class="prose mt-4">
+    <%= simple_format(@tenant.homepage_body.presence || "This is your homepage.") %>
+  </div>
+</div>

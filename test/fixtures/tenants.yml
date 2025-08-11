@@ -2,6 +2,7 @@
 
 one:
   name: MyString
+  slug: one
   plan: MyString
   plan_changed_at: MyString
   plan_expires_at: MyString
@@ -9,9 +10,12 @@ one:
   email: MyString
   locale: MyString
   time_zone: MyString
+  homepage_title: One Home
+  homepage_body: Welcome to tenant one.
 
 two:
   name: MyString
+  slug: two
   plan: MyString
   plan_changed_at: MyString
   plan_expires_at: MyString
@@ -19,3 +23,5 @@ two:
   email: MyString
   locale: MyString
   time_zone: MyString
+  homepage_title: Two Home
+  homepage_body: Welcome to tenant two.
