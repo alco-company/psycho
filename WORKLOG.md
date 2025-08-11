@@ -1,6 +1,6 @@
 # WORKLOG
 
-## 10/8/2025
+## 11/8/2025
 
 - rails new
 - edit .gitignore
@@ -8,3 +8,4 @@
 - add tenant
 - add multi-tenancy landing pages, for sub- and custom domains (alco.psychos.com/alco.com)
 - adding dynamic layouts to tenants, and domains
+- add seeding first tenant and first theme (psychOS + App Default), idempotent via db/seeds.rb
