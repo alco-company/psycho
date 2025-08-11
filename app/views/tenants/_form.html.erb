@@ -1,0 +1,57 @@
+<%= form_with(model: tenant, class: "contents") do |form| %>
+  <% if tenant.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(tenant.errors.count, "error") %> prohibited this tenant from being saved:</h2>
+
+      <ul class="list-disc ml-6">
+        <% tenant.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": tenant.errors[:name].none?, "border-red-400 focus:outline-red-600": tenant.errors[:name].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :plan %>
+    <%= form.text_field :plan, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": tenant.errors[:plan].none?, "border-red-400 focus:outline-red-600": tenant.errors[:plan].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :plan_changed_at %>
+    <%= form.text_field :plan_changed_at, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": tenant.errors[:plan_changed_at].none?, "border-red-400 focus:outline-red-600": tenant.errors[:plan_changed_at].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :plan_expires_at %>
+    <%= form.text_field :plan_expires_at, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": tenant.errors[:plan_expires_at].none?, "border-red-400 focus:outline-red-600": tenant.errors[:plan_expires_at].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :tax_number %>
+    <%= form.text_field :tax_number, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": tenant.errors[:tax_number].none?, "border-red-400 focus:outline-red-600": tenant.errors[:tax_number].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": tenant.errors[:email].none?, "border-red-400 focus:outline-red-600": tenant.errors[:email].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :locale %>
+    <%= form.text_field :locale, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": tenant.errors[:locale].none?, "border-red-400 focus:outline-red-600": tenant.errors[:locale].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :time_zone %>
+    <%= form.text_field :time_zone, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": tenant.errors[:time_zone].none?, "border-red-400 focus:outline-red-600": tenant.errors[:time_zone].any?}] %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  plan: MyString
+  plan_changed_at: MyString
+  plan_expires_at: MyString
+  tax_number: MyString
+  email: MyString
+  locale: MyString
+  time_zone: MyString
+
+two:
+  name: MyString
+  plan: MyString
+  plan_changed_at: MyString
+  plan_expires_at: MyString
+  tax_number: MyString
+  email: MyString
+  locale: MyString
+  time_zone: MyString

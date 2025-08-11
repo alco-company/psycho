@@ -5,3 +5,5 @@
 - rails new
 - edit .gitignore
 - add SSL for localhost:3000 - dev, debug scripts
+- add tenant
+- 
