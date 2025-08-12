@@ -3,6 +3,7 @@
 ## 12/8/2025
 
 - fix host authorization
+- fix buildjob
 
 ## 11/8/2025
 

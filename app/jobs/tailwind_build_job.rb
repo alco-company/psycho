@@ -23,9 +23,7 @@ class TailwindBuildJob < ApplicationJob
     # 2) Create input.css (imports + tenant layers)
     input_css = build_dir.join("input.css")
     File.write(input_css, <<~CSS + "\n" + sources[:theme_css] + "\n" + sources[:post_css])
-      @import "tailwindcss/base";
-      @import "tailwindcss/components";
-      @import "tailwindcss/utilities";
+      @import "tailwindcss";
     CSS
 
     # 3) Build command
