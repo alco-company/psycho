@@ -1,0 +1,5 @@
+newdir=/Users/walther/src/psycho/tmp/production/$(date +%Y-%m-%d)
+mkdir -p $newdir
+pushd $newdir
+scp docker6:'/var/lib/docker/volumes/storage/_data/prod*' ./
+popd
